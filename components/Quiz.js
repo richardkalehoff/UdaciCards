@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import { NavigationActions } from 'react-navigation'
 import { getDeck } from '../utils/api'
+import { clearLocalNotification, setLocalNotification } from '../utils/helpers'
 
 class Quiz extends Component {
   static navigationOptions = () => {
@@ -21,6 +22,9 @@ class Quiz extends Component {
     getDeck(id).then((deck) => this.setState(() => ({
       deck
     })))
+
+    clearLocalNotification()
+      .then(setLocalNotification)
   }
   handleCorrect = () => {
     this.setState(({ correct, onQuestion }) => ({

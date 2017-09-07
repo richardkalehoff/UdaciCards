@@ -5,6 +5,7 @@ import { StyleSheet, Text, View, StatusBar, Platform } from 'react-native'
 import { TabNavigator, StackNavigator } from 'react-navigation'
 import { Constants } from 'expo'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
+import { setLocalNotification } from './utils/helpers'
 import DeckList from './components/DeckList'
 import NewDeck from './components/NewDeck'
 import Deck from './components/Deck'
@@ -78,6 +79,9 @@ const MainNavigator = StackNavigator({
 })
 
 export default class App extends Component {
+  componentDidMount () {
+    setLocalNotification()
+  }
   render() {
     return (
       <View style={{flex: 1}}>
